@@ -23,7 +23,7 @@ Widget UserContainer(){
         ClipOval(
           child: Image.asset(
             "assets/user.png",
-            width: 70,
+            height: 67,
             fit: BoxFit.cover,
           ),
         ),

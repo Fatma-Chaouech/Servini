@@ -8,6 +8,7 @@ const red = Color(0xffea1751);
 const yellow = Color(0xffFBDC5C);
 const coldBackground = Color(0xffF2F6FA);
 const writingBlue = Color(0xff424E5E);
+const bubbleWhite = Color(0xffFFFDF9);
 
 // Gradients
 const lightRed = Color(0xffFF6992);
