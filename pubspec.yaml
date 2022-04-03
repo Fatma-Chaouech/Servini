@@ -76,7 +76,27 @@ flutter:
   # example:
 
   fonts:
-    - family: Gilroy
+    - family: GilroyBold
+      fonts:
+        - asset:  Fonts/gilroy/Gilroy-Bold.ttf
+
+    - family: GilroyMedium
+      fonts:
+        - asset:  Fonts/gilroy/Gilroy-Medium.ttf
+
+    - family: GilroyExtraBold
+      fonts:
+        - asset:  Fonts/gilroy/Gilroy-ExtraBold.ttf
+
+    - family: GilroyLight
+      fonts:
+        - asset:  Fonts/gilroy/Gilroy-Light.ttf
+
+    - family: GilroySemiBold
+      fonts:
+        - asset:  Fonts/gilroy/Gilroy-SemiBold.ttf
+
+    - family: GilroyRegular
       fonts:
         - asset:  Fonts/gilroy/Gilroy-Regular.ttf
   #

@@ -9,7 +9,7 @@ Widget SearchBar(){
     child: Row(
       children: [
         Expanded(
-          flex: 4,
+          flex: 3,
           child: Column(
             children: [
               Container(
@@ -35,6 +35,7 @@ Widget SearchBar(){
                       child: const Text(
                         "Search",
                         style: TextStyle(
+                          fontFamily: "GilroyBold",
                           fontSize: 15,
                         ),
                       ),
@@ -47,32 +48,43 @@ Widget SearchBar(){
         ),
         Expanded(
           flex: 1,
-          child: Container(
-            height: 60,
-            width: 67,
-            decoration:  BoxDecoration(
-              color: darkRed,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(37),
-                  topRight: Radius.circular(37),
-                  bottomLeft: Radius.circular(37),
-                  bottomRight: Radius.circular(37)
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: darkYellow.withOpacity(0.35),
-                  spreadRadius: 0,
-                  blurRadius: 30,
-                  offset: const Offset(0, 15), // changes position of shadow
+          child: Column(
+            children: [
+              Container(
+                height: 60,
+                width: 67,
+                decoration:  BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.bottomRight,
+                    end: Alignment.topLeft,
+                    colors: [
+                      darkOrange,
+                      lightOrange,
+                    ],
+                  ),
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(37),
+                      topRight: Radius.circular(37),
+                      bottomLeft: Radius.circular(37),
+                      bottomRight: Radius.circular(37)
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                        color: darkOrange.withOpacity(0.35),
+                        spreadRadius: 0,
+                        blurRadius: 20,
+                        offset: const Offset(0,10) // changes position of shadow
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(""),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(""),
+                  ],
+                ),
+              ),
             ],
-            ),
           ),
         ),
       ],
