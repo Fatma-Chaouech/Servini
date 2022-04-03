@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'colors.dart';
 
 void main() {
@@ -20,17 +21,84 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-          margin: EdgeInsets.fromLTRB(0, 100, 0, 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SmallCategory("Babysitter","assets/baby.png",darkRed,lightRed),
-              SmallCategory("Transporter","assets/truck.png",darkYellow, lightYellow),
-              SeeMore(darkYellow, lightYellow),
-            ],
+      body: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.fromLTRB(0, 54, 0, 0),
+            child: Column(
+              children: [
+              Image.asset(
+                  "assets/logo.png",
+                width: 140,
+              ),
+              ],
+            ),
           ),
-        ),
+          Container(
+            margin: const EdgeInsets.fromLTRB(20, 20, 0, 0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex : 3,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: const [
+                          Text(
+                            "Welcome",
+                            style: TextStyle(
+                              fontFamily: 'Gilroy',
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: const [
+                          Text(
+                            "John Wattson",
+                            style: TextStyle(
+                              fontSize: 30,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      ClipOval(
+                        child: Image.asset(
+                          "assets/user.png",
+                          width: 55,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SmallCategory("Babysitter","assets/baby.png",darkRed,lightRed),
+                SmallCategory("Transporter","assets/truck.png",darkYellow, lightYellow),
+                SeeMore(darkYellow, lightYellow),
+              ],
+            ),
+          ),
+        ]
+      ),
     );
   }
 }
@@ -96,7 +164,7 @@ Widget SmallCategory(String category, String icon, Color dark, Color light){
                 category,
                 style: const TextStyle(
                   //fontFamily: 'Gilroy',
-                  fontSize: 15,
+                  fontSize: 13,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -162,7 +230,7 @@ Widget SeeMore(Color dark, Color light){
               "See More",
               style: TextStyle(
                 fontFamily: 'Gilroy',
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -170,7 +238,7 @@ Widget SeeMore(Color dark, Color light){
               margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
               child: Image.asset(
                 "assets/dots.png",
-                height : 25,
+                height : 15,
               ),
             ),
           ],
