@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'colors.dart';
+import 'SearchBar.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -87,6 +88,9 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
           Container(
+            child: SearchBar(),
+          ),
+          Container(
             margin: const EdgeInsets.fromLTRB(0, 30, 0, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -97,7 +101,7 @@ class _MyAppState extends State<MyApp> {
               ],
             ),
           ),
-        ]
+        ],
       ),
     );
   }
