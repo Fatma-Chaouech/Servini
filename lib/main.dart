@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:servini_app/SearchPage.dart';
 import 'colors.dart';
 
 
@@ -55,35 +56,14 @@ class _MainPageState extends State<MainPage> {
                 ),
               ),
               const SizedBox(height: 250),
-              Container(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                height: 49,
-                width: 215,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(28)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: bubbleWhite.withOpacity(0.5),
-                    ),
-                    BoxShadow(
-                      color: darkRed.withOpacity(0.3),
-                      spreadRadius: -10,
-                      blurRadius: 20,
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: const [
-                    Text(
-                      "Let's Go!",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: bubbleWhite,
-                        fontFamily: "GilroySemiBold",
-                      ),
-                    ),
-                  ],
-                )
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SearchPage()),
+                  );
+                },
+                child: BubbleButton(),
               ),
             ],
           ),
@@ -91,4 +71,37 @@ class _MainPageState extends State<MainPage> {
       ),
     );
   }
+}
+
+Widget BubbleButton(){
+  return Container(
+      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+      height: 49,
+      width: 215,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(const Radius.circular(28)),
+        boxShadow: [
+          BoxShadow(
+            color: bubbleWhite.withOpacity(0.5),
+          ),
+          BoxShadow(
+            color: darkRed.withOpacity(0.3),
+            spreadRadius: -10,
+            blurRadius: 20,
+          ),
+        ],
+      ),
+      child: Column(
+        children: const [
+          Text(
+            "Let's Go!",
+            style: TextStyle(
+              fontSize: 20,
+              color: bubbleWhite,
+              fontFamily: "GilroySemiBold",
+            ),
+          ),
+        ],
+      )
+  );
 }
