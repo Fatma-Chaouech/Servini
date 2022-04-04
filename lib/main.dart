@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:servini_app/SearchPage.dart';
 import 'colors.dart';
 
+var pressed = false;
 
 void main() {
   runApp(const MaterialApp(
@@ -58,6 +59,9 @@ class _MainPageState extends State<MainPage> {
               const SizedBox(height: 250),
               GestureDetector(
                 onTap: () {
+                  setState(() {
+                    pressed = !pressed;
+                  });
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const SearchPage()),
@@ -79,20 +83,20 @@ Widget BubbleButton(){
       height: 49,
       width: 215,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(const Radius.circular(28)),
+        borderRadius: const BorderRadius.all(Radius.circular(28)),
         boxShadow: [
           BoxShadow(
-            color: bubbleWhite.withOpacity(0.5),
+            color: pressed? bubbleWhite.withOpacity(0.1):bubbleWhite.withOpacity(0.4),
           ),
           BoxShadow(
-            color: darkRed.withOpacity(0.3),
+            color:  pressed? bubbleWhite.withOpacity(0.0):darkRed.withOpacity(0.3),
             spreadRadius: -10,
             blurRadius: 20,
           ),
         ],
       ),
       child: Column(
-        children: const [
+        children: const[
           Text(
             "Let's Go!",
             style: TextStyle(

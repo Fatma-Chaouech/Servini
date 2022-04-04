@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:servini_app/usercontainer.dart';
 import 'HomeBar.dart';
 import 'colors.dart';
+import 'main.dart';
 import 'searchbar.dart';
 import 'appbar.dart';
+
 
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
 
   @override
-  State<SearchPage> createState() => _MySearchPage();
+  State<SearchPage> createState() {
+    pressed = false;
+    return _MySearchPage();
+  }
 }
 
 class _MySearchPage extends State<SearchPage> {
