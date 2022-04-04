@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servini_app/usercontainer.dart';
 import 'colors.dart';
-import 'searchbar.dart';
-import 'appbar.dart';
 
 Widget HomeBar(){
   return Container(
@@ -34,8 +31,7 @@ Widget HomeBar(){
             width: 55,
             height: 50,
             decoration: BoxDecoration(
-
-              borderRadius: BorderRadius.all(Radius.circular(30)),
+              borderRadius: const BorderRadius.all(Radius.circular(30)),
               boxShadow: [
                   BoxShadow(
                   color: bubbleWhite.withOpacity(0.5),
