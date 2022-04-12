@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
-import 'searchbar.dart';
+import 'Home/search_bar.dart';
 
-Widget CustomAppBar(){
+Widget customAppBar(){
   return Image.asset(
     "assets/logo.png",
     width: 120,
+    fit: BoxFit.fitWidth,
   );
 }
 

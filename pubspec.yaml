@@ -34,6 +34,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -76,29 +77,35 @@ flutter:
   # example:
 
   fonts:
-    - family: GilroyBold
-      fonts:
-        - asset:  Fonts/gilroy/Gilroy-Bold.ttf
-
-    - family: GilroyMedium
-      fonts:
-        - asset:  Fonts/gilroy/Gilroy-Medium.ttf
-
-    - family: GilroyExtraBold
-      fonts:
-        - asset:  Fonts/gilroy/Gilroy-ExtraBold.ttf
-
     - family: GilroyLight
       fonts:
         - asset:  Fonts/gilroy/Gilroy-Light.ttf
+
+    - family: GilroyMedium
+      fonts:
+        - asset:  Fonts/gilroy/Gilroy-Thin.ttf
+
+    - family: GilroyRegular
+      fonts:
+        - asset:  Fonts/gilroy/Gilroy-Regular.ttf
 
     - family: GilroySemiBold
       fonts:
         - asset:  Fonts/gilroy/Gilroy-SemiBold.ttf
 
-    - family: GilroyRegular
+    - family: GilroyBold
       fonts:
-        - asset:  Fonts/gilroy/Gilroy-Regular.ttf
+        - asset:  Fonts/gilroy/Gilroy-Bold.ttf
+
+    - family: GilroyExtraBold
+      fonts:
+        - asset:  Fonts/gilroy/Gilroy-ExtraBold.ttf
+
+
+
+
+
+
   #
   #   - family: Trajan Pro
   #     fonts:

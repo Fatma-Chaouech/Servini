@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:servini_app/SearchPage.dart';
-import 'colors.dart';
+import 'package:servini_app/welcome/welcome_page.dart';
+
 
 var pressed = false;
 
 void main() {
   runApp(const MaterialApp(
     home: MainPage(),
+    debugShowCheckedModeBanner: false,
   ));
 }
 
@@ -23,89 +23,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            darkOrange,
-            lightRed,
-          ],
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Container(
-          margin: const EdgeInsets.fromLTRB(95, 250 , 0, 0),
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                child: Image.asset(
-                  "assets/logo_white.png",
-                  width: 196,
-                ),
-              ),
-              const SizedBox(height: 8),
-              const Text(
-                "Small Jobs, Big Impacts",
-                style: TextStyle(
-                  fontFamily: "GilroySemiBold",
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 250),
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    pressed = !pressed;
-                  });
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SearchPage()),
-                  );
-                },
-                child: BubbleButton(),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return welcome(context);
   }
-}
 
-Widget BubbleButton(){
-  return Container(
-      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-      height: 49,
-      width: 215,
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(28)),
-        boxShadow: [
-          BoxShadow(
-            color: pressed? bubbleWhite.withOpacity(0.1):bubbleWhite.withOpacity(0.4),
-          ),
-          BoxShadow(
-            color:  pressed? bubbleWhite.withOpacity(0.0):darkRed.withOpacity(0.3),
-            spreadRadius: -10,
-            blurRadius: 20,
-          ),
-        ],
-      ),
-      child: Column(
-        children: const[
-          Text(
-            "Let's Go!",
-            style: TextStyle(
-              fontSize: 20,
-              color: bubbleWhite,
-              fontFamily: "GilroySemiBold",
-            ),
-          ),
-        ],
-      )
-  );
 }

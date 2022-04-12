@@ -1,34 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'colors.dart';
-import 'searchbar.dart';
-import 'appbar.dart';
+import '../colors.dart';
 
 
-Widget UserContainer(){
+
+Widget userContainer(BuildContext context){
+  final size = MediaQuery.of(context).size;
   return Container(
-    padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-    margin: const EdgeInsets.fromLTRB(23, 10, 23, 0),
+    padding: EdgeInsets.fromLTRB(size.width * 0.035, size.height * 0.015, size.width * 0.035,  size.height * 0.015),
     decoration: const BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(18),
-          topRight: Radius.circular(18),
-          bottomLeft: Radius.circular(18),
-          bottomRight: Radius.circular(18)
-      ),
+      borderRadius: BorderRadius.all(Radius.circular(18)),
     ),
     child: Row(
       children: [
         ClipOval(
           child: Image.asset(
             "assets/user.png",
-            height: 67,
+            height: 40,
             fit: BoxFit.cover,
           ),
         ),
         Container(
-          margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          margin: EdgeInsets.fromLTRB(size.width * 0.04, 0, 0, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -37,7 +30,8 @@ Widget UserContainer(){
                   const Text(
                     "Firas Ghanmi",
                     style: TextStyle(
-                      fontSize: 15,
+                      color: writingBlue,
+                      fontSize: 13,
                       fontFamily: "GilroyBold",
                     ),
                   ),
@@ -53,6 +47,7 @@ Widget UserContainer(){
                   Text(
                     "I'm a professional scientist who loves helping",
                     style: TextStyle(
+                      color: writingBlue,
                       fontSize: 10,
                       fontFamily: "GilroyRegular",
                     ),

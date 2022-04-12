@@ -24,3 +24,6 @@ const darkBlue = Color(0xff27CEE2);
 const lightOrange = Color(0xffFFD289);
 const darkOrange = Color(0xffF8B03C);
 
+const specialBlue = Color(0xff32D1E4);
+const specialPurple = Color(0xff73BCFF);
+const purple = Color(0xff6FBDFD);

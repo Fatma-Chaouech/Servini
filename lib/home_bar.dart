@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
 
-Widget HomeBar(){
+Widget homeBar(BuildContext context){
+  final size = MediaQuery.of(context).size;
   return Container(
-    width: 69,
-    height: 20,
     decoration: const BoxDecoration(
       gradient: LinearGradient(
         begin: Alignment.bottomRight,
@@ -14,22 +13,21 @@ Widget HomeBar(){
           lightOrange,
         ],
       ),
-      borderRadius: BorderRadius.all(Radius.circular(24))
+      borderRadius: BorderRadius.all(Radius.circular(20))
     ),
-    child: Container(
-      child: Row(
-        children: [
-          Container(
-            child: const Icon(
-              Icons.home,
-              color: bubbleWhite,
-            ),
-            margin: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+    child: Row(
+      children: [
+        const Expanded(
+          flex : 2,
+          child: Icon(
+            Icons.home,
+            color: bubbleWhite,
           ),
-          const SizedBox(width: 45),
-          Container(
-            width: 55,
-            height: 50,
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            height: size.height * 0.07,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(30)),
               boxShadow: [
@@ -53,15 +51,15 @@ Widget HomeBar(){
               ),
             ),
           ),
-          Container(
-            margin: const EdgeInsets.fromLTRB(50, 0, 0, 0),
-            child: const Icon(
-                Icons.person,
-                color: bubbleWhite,
-            ),
-          )
-        ],
-      ),
+        ),
+        const Expanded(
+          flex: 2,
+          child: Icon(
+              Icons.person,
+              color: bubbleWhite,
+          ),
+        )
+      ],
     ),
   );
 }
