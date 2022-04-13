@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:servini_app/home/user_container.dart';
+import 'package:servini_app/profile/profile_page.dart';
 import '../home_bar.dart';
 import '../colors.dart';
 import 'search_bar.dart';
@@ -75,11 +76,19 @@ class _MySearchPage extends State<SearchPage> {
                           flex: 1,
                           child: Column(
                             children: [
-                              ClipOval(
-                                child: Image.asset(
-                                  "assets/user.png",
-                                  width: 43,
-                                  fit: BoxFit.cover,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const ProfilePage()),
+                                  );
+                                },
+                                child: ClipOval(
+                                  child: Image.asset(
+                                    "assets/user.png",
+                                    width: 43,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
 

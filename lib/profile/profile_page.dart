@@ -17,6 +17,7 @@ class _MyProfilePage extends State<ProfilePage> {
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: coldBackground,
         body: SizedBox(
           height: size.height,
           width: size.width,

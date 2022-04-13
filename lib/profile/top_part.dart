@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../Home/search_page.dart';
 import '../colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 Widget topPart(BuildContext context, double numberStars){
   final size = MediaQuery.of(context).size;
@@ -50,9 +52,14 @@ Widget topPart(BuildContext context, double numberStars){
           children: [
             Container(
               margin: EdgeInsets.fromLTRB(size.width * 0.05,size.width * 0.05,0,0),
-              child: const Icon(
-                Icons.arrow_back,
-                color: Colors.white,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SearchPage()),
+                  );
+                },
+                  child: SvgPicture.asset("assets/arrow.svg"),
               ),
             ),
           ],

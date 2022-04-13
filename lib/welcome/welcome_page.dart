@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:servini_app/Home/search_page.dart';
+import 'package:servini_app/home/search_page.dart';
 import '../colors.dart';
-import '../profile/profile_page.dart';
 import 'bubble_button.dart';
 
 
@@ -26,7 +25,7 @@ Widget welcome(BuildContext context){
           child: Column(
             children: [
               Image.asset(
-                "assets/logo_small.png",
+                "assets/logo_slogan.png",
                 width: 200,
               ),
               SizedBox(height: size.height * 0.32),
@@ -34,7 +33,7 @@ Widget welcome(BuildContext context){
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const ProfilePage()),
+                    MaterialPageRoute(builder: (context) => const SearchPage()),
                   );
                 },
                 child: bubbleButton(context),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import '../colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 Widget heartButton(BuildContext context){
   final size = MediaQuery.of(context).size;
@@ -19,8 +20,9 @@ Widget heartButton(BuildContext context){
         ),
       ],
     ),
-    child: Image.asset(
-      "assets/heart.png",
+    child: SvgPicture.asset(
+      "assets/empty_heart.svg",
+      fit: BoxFit.scaleDown,
     ),
   );
 }
