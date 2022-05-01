@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:servini_app/add/add_page.dart';
 import 'colors.dart';
 
 Widget homeBar(BuildContext context){
@@ -41,12 +42,20 @@ Widget homeBar(BuildContext context){
               ),
               ],
             ),
-            child: const Center(
-              child: Text(
-                "+",
-                style: TextStyle(
-                  color: bubbleWhite,
-                  fontSize: 30,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AddPage()),
+                );
+              },
+              child: const Center(
+                child: Text(
+                  "+",
+                  style: TextStyle(
+                    color: bubbleWhite,
+                    fontSize: 30,
+                  ),
                 ),
               ),
             ),

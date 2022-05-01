@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import '../colors.dart';
+import '../profile/stars.dart';
 
 
 
 Widget userContainer(BuildContext context){
   final size = MediaQuery.of(context).size;
+  final stars = <Widget> [];
+  star(stars,3.5);
   return Container(
     padding: EdgeInsets.fromLTRB(size.width * 0.035, size.height * 0.015, size.width * 0.035,  size.height * 0.015),
     decoration: const BoxDecoration(
@@ -32,12 +35,15 @@ Widget userContainer(BuildContext context){
                     style: TextStyle(
                       color: writingBlue,
                       fontSize: 13,
-                      fontFamily: "GilroyBold",
+                      fontFamily: "Gilroy",
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                   Container(
                     margin: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-                    child: Stars(),
+                    child: Row(
+                      children: stars,
+                    ),
                   )
                 ],
               ),
@@ -49,7 +55,7 @@ Widget userContainer(BuildContext context){
                     style: TextStyle(
                       color: writingBlue,
                       fontSize: 10,
-                      fontFamily: "GilroyRegular",
+                      fontFamily: "Gilroy",
                     ),
                   ),
                 ],
@@ -60,7 +66,7 @@ Widget userContainer(BuildContext context){
                     "others.",
                     style: TextStyle(
                       fontSize: 10,
-                      fontFamily: "GilroyRegular",
+                      fontFamily: "Gilroy",
                     ),
                   )
                 ],
@@ -81,33 +87,6 @@ Widget userContainer(BuildContext context){
   );
 }
 
-
-Widget Stars(){
-  return Row(
-    children: const [
-      Icon(
-          Icons.star,
-        size: 15,
-      ),
-      Icon(
-        Icons.star,
-        size: 15,
-      ),
-      Icon(
-        Icons.star,
-        size: 15,
-      ),
-      Icon(
-        Icons.star,
-        size: 15,
-      ),
-      Icon(
-        Icons.star,
-        size: 15,
-      ),
-    ],
-  );
-}
 
 Widget LabelCategory(){
   return Container(
@@ -135,7 +114,8 @@ Widget LabelCategory(){
         Text(
           "Catgory",
           style: TextStyle(
-            fontFamily: 'GilroyMedium',
+            fontFamily: 'Gilroy',
+            fontWeight: FontWeight.w500,
             fontSize: 10,
           ),
         ),

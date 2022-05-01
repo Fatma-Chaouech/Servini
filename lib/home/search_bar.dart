@@ -29,7 +29,8 @@ Widget searchBar(BuildContext context){
                     "Search",
                     style: TextStyle(
                       color: Colors.grey[400],
-                      fontFamily: "GilroyBold",
+                      fontFamily: "Gilroy",
+                      fontWeight: FontWeight.w800,
                       fontSize: 13,
                     ),
                   ),

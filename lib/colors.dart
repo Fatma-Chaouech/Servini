@@ -10,6 +10,7 @@ const coldBackground = Color(0xffF2F6FA);
 const writingBlue = Color(0xff424E5E);
 const bubbleWhite = Color(0xffFFFDF9);
 const babyPink = Color(0xffFFF2F6);
+const inputText = Color(0xff8292A9);
 
 // Gradients
 const lightRed = Color(0xffFF6992);

@@ -54,9 +54,9 @@ Widget smallCategory(BuildContext context, String category, String icon, Color d
               category,
               style: const TextStyle(
                 color: Colors.white70,
-                fontFamily: 'GilroyLight',
+                fontFamily: 'Gilroy',
                 fontSize: 13,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w800,
               ),
             ),
           ],

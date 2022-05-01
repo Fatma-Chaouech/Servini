@@ -29,7 +29,8 @@ Widget bubbleButton(BuildContext context){
             style: TextStyle(
               fontSize: 14,
               color: bubbleWhite,
-              fontFamily: "GilroySemiBold",
+              fontFamily: "Gilroy",
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],

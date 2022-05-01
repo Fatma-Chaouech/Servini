@@ -26,17 +26,7 @@ Widget welcome(BuildContext context){
             children: [
               Image.asset(
                 "assets/logo_slogan.png",
-                width: 200,
-              ),
-              SizedBox(height: size.height * 0.32),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SearchPage()),
-                  );
-                },
-                child: bubbleButton(context),
+                width: size.width * 0.75,
               ),
             ],
           ),

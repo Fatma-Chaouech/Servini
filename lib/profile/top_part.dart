@@ -3,22 +3,19 @@ import '../Home/search_page.dart';
 import '../colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-Widget topPart(BuildContext context, double numberStars){
+Widget topPart(BuildContext context, double numberStars) {
   final size = MediaQuery.of(context).size;
   final stars = <Widget>[];
   for (var i = 0; i < 5; i++) {
     if (numberStars >= 1) {
-      stars.add(Image.asset("assets/full_star.png",height: 22));
+      stars.add(Image.asset("assets/full_star.png", height: 22));
       numberStars--;
-    }
-    else if (numberStars > 0){
-      stars.add(Image.asset("assets/half_star.png",height: 22));
+    } else if (numberStars > 0) {
+      stars.add(Image.asset("assets/half_star.png", height: 22));
       numberStars--;
+    } else {
+      stars.add(Image.asset("assets/empty_star.png", height: 22));
     }
-    else {
-      stars.add(Image.asset("assets/empty_star.png",height: 22));
-    }
-
   }
 
   return Container(
@@ -51,7 +48,8 @@ Widget topPart(BuildContext context, double numberStars){
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(size.width * 0.05,size.width * 0.05,0,0),
+              margin: EdgeInsets.fromLTRB(
+                  size.width * 0.05, size.width * 0.05, 0, 0),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -59,7 +57,7 @@ Widget topPart(BuildContext context, double numberStars){
                     MaterialPageRoute(builder: (context) => const SearchPage()),
                   );
                 },
-                  child: SvgPicture.asset("assets/arrow.svg"),
+                child: SvgPicture.asset("assets/arrow.svg"),
               ),
             ),
           ],
@@ -72,7 +70,7 @@ Widget topPart(BuildContext context, double numberStars){
               Positioned(
                 child: Image.asset(
                   "assets/level_3.png",
-                  height: size.height * 0.18 + 8 ,
+                  height: size.height * 0.18 + 8,
                 ),
               ),
               ClipOval(
@@ -92,7 +90,6 @@ Widget topPart(BuildContext context, double numberStars){
             fontFamily: "GilroySemiBold",
             fontSize: 25,
           ),
-
         ),
         const Text(
           "Science Professor & part-time tutor",
@@ -118,7 +115,6 @@ Widget topPart(BuildContext context, double numberStars){
                     fontFamily: "GilroyRegular",
                     color: Colors.white,
                   ),
-
                 ),
               ],
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:servini_app/categories/categories.dart';
 import 'package:servini_app/home/user_container.dart';
 import 'package:servini_app/profile/profile_page.dart';
 import '../home_bar.dart';
@@ -51,7 +52,8 @@ class _MySearchPage extends State<SearchPage> {
                                     "Welcome",
                                     style: TextStyle(
                                       color: writingBlue,
-                                      fontFamily: 'GilroyBold',
+                                      fontFamily: 'Gilroy',
+                                      fontWeight: FontWeight.w800,
                                       fontSize: 15,
                                     ),
                                   ),
@@ -63,7 +65,8 @@ class _MySearchPage extends State<SearchPage> {
                                     "John Wattson",
                                     style: TextStyle(
                                       color: writingBlue,
-                                      fontFamily: 'GilroyExtraBold',
+                                      fontFamily: 'Gilroy',
+                                      fontWeight: FontWeight.w900,
                                       fontSize: 20,
                                     ),
                                   ),
@@ -108,7 +111,15 @@ class _MySearchPage extends State<SearchPage> {
                         children: [
                           smallCategory(context,"Transporter","assets/transporter.png",darkBlue, lightBlue),
                           smallCategory(context,"Babysitter","assets/babysitter.png",darkYellow,lightYellow),
-                          seeMore(context, darkRed, lightRed),
+                          GestureDetector(
+                            onTap:(){
+                              Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const Categories()),
+                            );
+                              } ,
+                            child:seeMore(context, darkRed, lightRed),
+                          )
                         ],
                       ),
                     ),

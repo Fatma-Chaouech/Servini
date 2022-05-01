@@ -11,18 +11,19 @@ class Category extends StatelessWidget {
       required this.isRight});
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     double positionX, positionY;
     if (isRight) {
-      positionY = 5;
-      positionX = -40;
+      positionY = size.height * 0.008;
+      positionX = 0 ;
     } else {
-      positionY = 5;
-      positionX = 40;//naarach les positions bedhabt
+      positionY = size.height * 0.992;;
+      positionX = size.width;
     }
     return Stack(overflow: Overflow.visible, fit: StackFit.loose, children: [
       Container(
-        width: 310,
-        height: 122,
+        width: size.width ,
+        height: size.height * 0.2,
         decoration: const BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -42,19 +43,15 @@ class Category extends StatelessWidget {
             ),
           ),
           Container(
-            width: 220,
-            margin: const EdgeInsets.only(left: 26, top: 10),
-            child: Flexible(
-              child: Text(
-                description,
-                style: const TextStyle(
-                    color: Color(0xFFF5F8FB),
-                    fontSize: 13,
-                    fontFamily: "Gilroy",
-                    fontWeight: FontWeight.w800),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-              ),
+            margin: const EdgeInsets.only(left: 26, top: 10,right:145),
+            child: Text(
+              description,
+              style: const TextStyle(
+                  color: Color(0xFFF5F8FB),
+                  fontFamily: "Gilroy",
+                  fontWeight: FontWeight.w800),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 4,
             ),
           ),
         ]),

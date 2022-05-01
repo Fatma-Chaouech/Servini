@@ -11,8 +11,9 @@ Widget titleRow(String firstTitle){
           firstTitle,
           style: const TextStyle(
             color: writingBlue,
-            fontFamily: "GilroySemiBold",
-            fontSize: 15,
+            fontFamily: "Gilroy",
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
           ),
         ),
       ),
@@ -22,8 +23,9 @@ Widget titleRow(String firstTitle){
           "See All",
           style: TextStyle(
             color: writingBlue,
-            fontFamily: "GilroyLight",
-            fontSize: 10,
+            fontFamily: "Gilroy",
+            fontWeight: FontWeight.w300,
+            fontSize: 13,
           ),
         ),
       )

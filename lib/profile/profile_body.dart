@@ -5,16 +5,21 @@ import 'package:servini_app/home/title_row.dart';
 import 'package:servini_app/profile/offer.dart';
 
 class ProfileBody extends StatelessWidget {
+  const ProfileBody({Key? key}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.fromLTRB(size.height * 0.03,0,size.height * 0.03,0),
       child: Column(
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              SizedBox(height: 20),
-              Text(
+            children: [
+              SizedBox(height: size.height * 0.04),
+              const Text(
                 "About",
                 style: TextStyle(
                   color: writingBlue,
@@ -23,19 +28,27 @@ class ProfileBody extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              SizedBox(height: 20),
-              Text("I’m a professional scientist who loves helping others.",
+              SizedBox(height: size.height * 0.01),
+              const Text("I’m a professional scientist who loves helping others.",
                   style: TextStyle(fontSize: 16, fontFamily: "Gilroy")),
             ],
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: size.height * 0.03),
           titleRow("Offers"),
           Offer(
             title: 'Part-time 4th year High School Science tutor',
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: size.height * 0.03),
           titleRow("Recommendations"),
-          const SizedBox(height: 20),
+          SizedBox(height: size.height * 0.025),
+          PersonCard(
+              name: "Foulen",
+              lastName: "Fouleni",
+              description:
+                  "Firas is a very professional science tutor. Highly recommend!",
+              nbStars: 4.5,
+              pic: "assets/user.png"),
+          SizedBox(height: size.height * 0.025),
           PersonCard(
               name: "Foulen",
               lastName: "Fouleni",
@@ -43,14 +56,6 @@ class ProfileBody extends StatelessWidget {
                   "Firas is a very professional science tutor. Highly recommend!",
               nbStars: 4,
               pic: "assets/user.png"),
-          const SizedBox(height: 20),
-          PersonCard(
-              name: "Foulen",
-              lastName: "Fouleni",
-              description:
-                  "Firas is a very professional science tutor. Highly recommend!",
-              nbStars: 4,
-              pic: "assets/user.png")
         ],
       ),
     );

@@ -50,7 +50,7 @@ class PersonCard extends StatelessWidget {
           ));
           for (var i = 0; i < 4 - nbStars; i++) {
             list.add(Image.asset(
-              'assets/étoile-vide.png',
+              'assets/empty_star.png',
               width: 19,
               height: 19,
             ));
