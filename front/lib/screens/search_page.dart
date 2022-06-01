@@ -32,7 +32,7 @@ class _MySearchPage extends State<SearchPage> {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           title: Center(
-            child: customAppBar(),
+            child: customAppBar(context),
           ),
         ),
         backgroundColor: coldBackground,
@@ -65,10 +65,10 @@ class _MySearchPage extends State<SearchPage> {
                                 ],
                               ),
                               Row(
-                                children: [
+                                children: const [
                                   Text(
                                     "someone",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       color: writingBlue,
                                       fontFamily: 'Gilroy',
                                       fontWeight: FontWeight.w800,
@@ -123,7 +123,7 @@ class _MySearchPage extends State<SearchPage> {
                               darkYellow, lightYellow),
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => const Categories()),

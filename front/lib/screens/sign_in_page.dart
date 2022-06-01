@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:servini_app/constants/colors.dart';
 import 'package:servini_app/screens/search_page.dart';
-import 'package:servini_app/screens/sing_up_page.dart';
+import 'package:servini_app/screens/sign_up_page.dart';
+import '../main.dart';
 import '../providers/signIn.dart';
 import '../services/service.dart';
 
@@ -28,6 +29,12 @@ class _MySignInPage extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    // if(token.isNotEmpty) {
+    //   Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => const SearchPage()),
+    //   );
+    // }
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: GestureDetector(
@@ -99,7 +106,7 @@ class _MySignInPage extends State<SignInPage> {
                           alignment: Alignment.centerRight,
                           child: GestureDetector(
                             onTap: (){
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(builder: (
                                     context) => const SignUpPage()),
@@ -137,8 +144,8 @@ class _MySignInPage extends State<SignInPage> {
                                   isApiCallProcess = false;
                                 });
                                 if (value.token.isNotEmpty) {
-
-                                  Navigator.push(
+                                  token = value.token ;
+                                  Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(builder: (
                                         context) => const SearchPage()),

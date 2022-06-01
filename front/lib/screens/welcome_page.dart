@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:servini_app/constants/colors.dart';
+import 'package:servini_app/screens/search_page.dart';
+
+import '../main.dart';
 
 
 Widget welcome(BuildContext context){
+  // if(connected) {
+  //   Navigator.push(
+  //     context,
+  //     MaterialPageRoute(builder: (context) => const SearchPage()),
+  //   );
+  // }
+  // connected = true;
   final size = MediaQuery.of(context).size;
   return Container(
     decoration: const BoxDecoration(

@@ -44,7 +44,7 @@ Widget homeBar(BuildContext context){
             ),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const AddPage()),
                 );

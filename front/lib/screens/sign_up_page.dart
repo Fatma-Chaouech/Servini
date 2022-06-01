@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:servini_app/constants/colors.dart';
 import 'package:servini_app/providers/signUp.dart';
+import 'package:servini_app/screens/search_page.dart';
 import 'package:servini_app/screens/sign_in_page.dart';
+import '../main.dart';
 import '../services/service.dart';
 
 
@@ -33,6 +35,13 @@ class _MySignUpPage extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
+    // if(token.isNotEmpty) {
+    //   Navigator.pushReplacement(
+    //     context,
+    //     MaterialPageRoute(builder: (
+    //         context) => const SearchPage()),
+    //   );
+    // }
     final size = MediaQuery.of(context).size;
     return SafeArea(
       child: GestureDetector(
@@ -176,7 +185,7 @@ class _MySignUpPage extends State<SignUpPage> {
                         alignment: Alignment.centerRight,
                         child: GestureDetector(
                           onTap: (){
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(builder: (
                                   context) => const SignInPage()),
@@ -199,14 +208,7 @@ class _MySignUpPage extends State<SignUpPage> {
                           backgroundColor: MaterialStateProperty.all<Color>(darkRed),
                         ),
                         onPressed: () {
-                          setState(Null Function() param0){
-                            nameController.text="";
-                            descController.text="";
-                            passwordController.text="";
-                            usernameController.text="";
-                            locationController.text="";
-                            emailController.text="";
-                          };
+
                           if (validateAndSave()) {
                             setState(() {
                               isApiCallProcess = true;
@@ -220,13 +222,22 @@ class _MySignUpPage extends State<SignUpPage> {
                                 const snackBar = SnackBar(
                                     content: Text("Successfully registered!"));
                                 scaffoldKey.currentState?.showSnackBar(snackBar);
-                                Navigator.push(
+                                // token = value.pass ;
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(builder: (
                                       context) => const SignInPage()),
                                 );
                               }
                               else {
+                                setState(Null Function() param0){
+                                  nameController.text="";
+                                  descController.text="";
+                                  passwordController.text="";
+                                  usernameController.text="";
+                                  locationController.text="";
+                                  emailController.text="";
+                                };
                                 const snackBar = SnackBar(
                                     content: Text("Error",style: TextStyle(color: Colors.white),));
                                 scaffoldKey.currentState?.showSnackBar(snackBar);

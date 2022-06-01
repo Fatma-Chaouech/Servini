@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:servini_app/providers/user.dart';
 import 'package:servini_app/screens/sign_in_page.dart';
-import 'package:servini_app/screens/sing_up_page.dart';
 import 'package:servini_app/screens/welcome_page.dart';
 import 'dart:async';
 
-var pressed = false;
+var token = "";
+// var connected = false;
 
 void main() {
   runApp(const MaterialApp(
