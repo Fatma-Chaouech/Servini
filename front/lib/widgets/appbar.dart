@@ -11,10 +11,11 @@ Widget customAppBar(context){
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (c) => SignInPage()),
                   (route) => false);},
-          child: const Icon(Icons.arrow_back,
-          color: Colors.black,
+          child: Image.asset(
+          "assets/logout_icon.png",
+            width : 20,
+          ),
         ),
-      ),
       Container(
         margin: EdgeInsets.fromLTRB( size.width * 0.25, 0, 0, 0),
         child: Image.asset(
