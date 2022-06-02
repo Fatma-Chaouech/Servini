@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:servini_app/screens/categories_page.dart';
+import 'package:servini_app/screens/category_offer_request.dart';
 
 import 'package:servini_app/widgets/user_container.dart';
 import 'package:servini_app/screens/profile_page.dart';
@@ -134,12 +135,21 @@ class _MySearchPage extends State<SearchPage> {
                                            List colors=[[darkYellow, lightYellow],[darkBlue, lightBlue]];
                                             return Container(
                                               margin: EdgeInsets.fromLTRB(size.width * 0.01, 0, size.width * 0.01, 0),
-                                              child: Column(
-                                                children: <Widget>[
-                                                  smallCategory(context,
-                                                      category.title,
-                                                      category.pic,colors[index][0], colors[index][1]),
-                                                ],
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>  CategoryOfferRequest(title: category.title),)
+                                                  );
+                                                },
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    smallCategory(context,
+                                                        category.title,
+                                                        category.pic,colors[index][0], colors[index][1]),
+                                                  ],
+                                                ),
                                               ),
                                             );
                                             }
@@ -160,7 +170,7 @@ class _MySearchPage extends State<SearchPage> {
                                 );
                                 }
                               else{
-                                return Center(child: CircularProgressIndicator());
+                                return Center(child: const CircularProgressIndicator());
                               }
                             },
                           ),
