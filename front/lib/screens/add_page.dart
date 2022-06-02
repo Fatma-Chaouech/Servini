@@ -19,7 +19,7 @@ class _MyAddPage extends State<AddPage> {
   final TextEditingController priceController = TextEditingController();
   final TextEditingController titleController = TextEditingController();
   final TextEditingController disponibilityController = TextEditingController();
-  NetworkHelper networkHelper=NetworkHelper("http://10.0.2.2:3000/category");
+  NetworkHelper networkHelper = NetworkHelper("http://10.0.2.2:3000/category");
   String? dropdownValue;
   String dropdownValue2 = 'Offer';
   late List categories;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:servini_app/screens/add_page.dart';
 import 'package:servini_app/constants/colors.dart';
-
 import '../screens/search_page.dart';
 
 Widget homeBar(BuildContext context){
@@ -72,11 +71,16 @@ Widget homeBar(BuildContext context){
             ),
           ),
         ),
-        const Expanded(
+         Expanded(
           flex: 2,
-          child: Icon(
-              Icons.person,
-              color: bubbleWhite,
+          child: GestureDetector(
+            onTap: () {
+
+            },
+            child: Image.asset(
+                "assets/messenger.png",
+            height: 19),
+
           ),
         )
       ],

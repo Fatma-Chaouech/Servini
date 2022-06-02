@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:servini_app/screens/category_offer_request.dart';
+import 'package:servini_app/widgets/home_bar.dart';
 
 import '../modals/category.dart';
 import '../widgets/category.dart';
-import '../widgets/choice.dart';
 import 'package:servini_app/handlers/category_backend.dart';
 import 'package:searchfield/searchfield.dart';
 class CategoryWidget extends StatefulWidget {
@@ -21,96 +21,107 @@ class Categories extends State<CategoryWidget> {
     List<String> test=['countries','test','wow'];
     return SafeArea(
       child: Scaffold(
-        body: ListView(
-          padding: EdgeInsets.fromLTRB(size.width * 0.05, size.height * 0.03, size.width * 0.05, 0),
+        body: Stack(
           children: [
-            Row(
-
+            ListView(
+              padding: EdgeInsets.fromLTRB(size.width * 0.05, size.height * 0.03, size.width * 0.05, 0),
               children: [
-                GestureDetector(child: Icon(Icons.arrow_back),
-                onTap: ()=> Navigator.pop(context)),
+                Row(
+
+                  children: [
+                    GestureDetector(child: Icon(Icons.arrow_back),
+                        onTap: ()=> Navigator.pop(context)),
+                    SizedBox(
+                      width: size.height * 0.04,
+                    ),
+                    const Text(
+                      "Categories",
+                      style: TextStyle(
+                          color: Color(0xFF424E5E),
+                          fontFamily: "Gilroy",
+                          fontSize: 25,
+                          fontWeight: FontWeight.w800),
+                      textAlign: TextAlign.left,
+                    ),
+                  ],
+                ),
                 SizedBox(
-                  width: size.height * 0.04,
+                  height: size.height * 0.04,
+                ),FutureBuilder(
+                  future: networkHelper.fetchCategory(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot){
+                    if(snapshot.hasData){
+                      List<Category> categories=snapshot.data;
+                      return SearchField<Category>(
+                        suggestions: categories
+                            .map(
+                              (e) => SearchFieldListItem<Category>(
+                            e.title,//e.name
+                            item: e,
+                          ),
+                        )
+                            .toList(),
+                      );}
+                    else{
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
                 ),
-                const Text(
-                  "Categories",
-                  style: TextStyle(
-                      color: Color(0xFF424E5E),
-                      fontFamily: "Gilroy",
-                      fontSize: 25,
-                      fontWeight: FontWeight.w800),
-                  textAlign: TextAlign.left,
+
+                SearchField<String>(
+                  suggestions: test
+                      .map(
+                        (e) => SearchFieldListItem<String>(
+                      e,//e.name
+                      item: e,
+                    ),
+                  )
+                      .toList(),
                 ),
+                FutureBuilder(
+                  future: networkHelper.fetchCategory(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot){
+                    if(snapshot.hasData){
+                      return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (context, index) {
+                            Category category = snapshot.data[index];
+                            return GestureDetector(
+                              onTap: ()=> Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => CategoryOfferRequest(title:category.title)),
+                              ),
+                              child: Column(
+                                children: <Widget>[
+                                  Category2(
+                                      name: category.title,
+                                      description:
+                                      category.description,
+                                      //Does your house need painting? aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                                      image: category.pic,
+                                      isRight: true),
+                                  SizedBox(
+                                    height: size.height * 0.05,
+                                  ),
+                                ],
+                              ),
+                            );
+                          });}
+                    else{
+                      return Center(child: CircularProgressIndicator());
+                    }
+                  },
+                )
               ],
             ),
-            SizedBox(
-              height: size.height * 0.04,
-            ),FutureBuilder(
-              future: networkHelper.fetchCategory(),
-              builder: (BuildContext context, AsyncSnapshot snapshot){
-                if(snapshot.hasData){
-        List<Category> categories=snapshot.data;
-                  return SearchField<Category>(
-                    suggestions: categories
-                        .map(
-                          (e) => SearchFieldListItem<Category>(
-                        e.title,//e.name
-                        item: e,
-                      ),
-                    )
-                        .toList(),
-                  );}
-                else{
-                  return Center(child: CircularProgressIndicator());
-                }
-              },
+            Positioned(
+              left: size.width * 0.12,
+              top: size.height * 0.85,
+              height: size.height * 0.1,
+              width: size.width * 0.75,
+              child: homeBar(context),
             ),
-
-            SearchField<String>(
-              suggestions: test
-                  .map(
-                    (e) => SearchFieldListItem<String>(
-                  e,//e.name
-                  item: e,
-                ),
-              )
-                  .toList(),
-            ),
-        FutureBuilder(
-            future: networkHelper.fetchCategory(),
-            builder: (BuildContext context, AsyncSnapshot snapshot){
-                  if(snapshot.hasData){
-              return ListView.builder(
-                  shrinkWrap: true,
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, index) {
-                Category category = snapshot.data[index];
-                return GestureDetector(
-                  onTap: ()=> Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CategoryOfferRequest(title:category.title)),
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Category2(
-                          name: category.title,
-                          description:
-                          category.description,
-                          //Does your house need painting? aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                          image: category.pic,
-                          isRight: true),
-                      SizedBox(
-                        height: size.height * 0.05,
-                      ),
-                    ],
-                  ),
-                );
-              });}
-            else{
-              return Center(child: CircularProgressIndicator());
-              }
-      },
-      )
           ],
         ),
       ),

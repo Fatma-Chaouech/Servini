@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import 'package:servini_app/screens/search_page.dart';
-import 'package:servini_app/screens/sign_up_page.dart';
+import 'package:servini_app/screens/sign_in_page.dart';
 import 'package:servini_app/screens/welcome_page.dart';
 import 'dart:async';
 
@@ -26,10 +23,10 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   PageController pageController = PageController();
   int currentIndex = 0;
-
   @override
   void initState() {
     super.initState();
+
     Timer.periodic(const Duration(seconds: 3), (Timer timer) {
       if (currentIndex < 2) {
         currentIndex++;
@@ -54,7 +51,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return PageView(
-        children: [welcome(context), SignUpPage()],
+        children: [welcome(context), SignInPage()],
         controller: pageController,
         onPageChanged: (int index) {
           setState(() {
@@ -64,5 +61,6 @@ class _MainPageState extends State<MainPage> {
         }
       );
   }
+
 
 }

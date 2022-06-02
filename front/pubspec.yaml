@@ -38,6 +38,15 @@ dependencies:
   http: 0.13.4
   searchfield: ^0.6.5
   jwt_decode: ^0.3.1
+  stream_chat: ^4.2.0
+  logging: ^1.0.2
+  logger: ^1.1.0
+  google_fonts: ^3.0.1
+  stream_chat_flutter: ^4.2.0
+  stream_chat_flutter_core: ^4.2.0
+  faker: ^2.0.0
+  socket_io: ^1.0.1
+  socket_io_client: ^1.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
