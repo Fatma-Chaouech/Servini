@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:servini_app/handlers/recommendation_backend.dart';
+import 'package:servini_app/widgets/person_card.dart';
 
-import '../handlers/offer_backend.dart';
-import '../handlers/request_backend.dart';
-import 'offer.dart';
 
-class RequestsPage extends StatefulWidget {
+class RecommendationsPage extends StatefulWidget {
   String username;
-  RequestsPage({Key? key,required this.username}) : super(key: key);
+  RecommendationsPage({Key? key,required this.username}) : super(key: key);
   @override
-  State<RequestsPage> createState() => _MyRequestsPage();
+  State<RecommendationsPage> createState() => _MyRecommendationsPage();
 }
 
-class _MyRequestsPage extends State<RequestsPage> {
+class _MyRecommendationsPage extends State<RecommendationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,13 +19,13 @@ class _MyRequestsPage extends State<RequestsPage> {
         iconTheme: IconThemeData(
           color: Colors.black,
         ),
-        title: Text(widget.username+"'s Requests page",style: TextStyle(color: Colors.black),),
+        title: Text("Recommendations page",style: TextStyle(color: Colors.black),),
         elevation: 0.0,
         backgroundColor: Colors.transparent,
       ),
       body:
       FutureBuilder(
-          future: getRequestsByUsername(widget.username),
+          future: getRecommendationsByUser(widget.username),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if(snapshot.connectionState==ConnectionState.done){
               if (snapshot.data == null) {
@@ -45,14 +44,15 @@ class _MyRequestsPage extends State<RequestsPage> {
               }
               else {
                 return ListView.builder(
-                  shrinkWrap: true,
                   itemCount: snapshot.data.length,
                   itemBuilder: (context, index) {
-                    return OfferRequestWidget(disponibility: snapshot.data[index]["disponibility"].toString(),
-                      description: snapshot.data[index]["description"].toString(),
-                      price: snapshot.data[index]["price"].toString(),
-                      title: snapshot.data[index]["title"].toString(),
-                      category: snapshot.data[index]["category"].toString(),);
+                    return PersonCard(
+                        fullname: '${snapshot.data[index]["giver"]["username"]}',
+
+                        description:
+                        '${snapshot.data[index]["description"]}',
+                        nbStars: double.parse('${snapshot.data[index]["rating"]}'),
+                        pic: "assets/user.png");
                   },
 
                 );

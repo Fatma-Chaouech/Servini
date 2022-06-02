@@ -1,4 +1,4 @@
-import { RegisterDto } from "../auth/dto/register.dto";
+/* eslint- prettier/prettier */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Offer } from 'src/offer/entities/offer.entity';
@@ -6,8 +6,8 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
+import { RegisterDto } from "../auth/dto/register.dto";
 import * as bcrypt from "bcrypt";
-
 
 @Injectable()
 export class UserService {
@@ -18,13 +18,23 @@ export class UserService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
   ) {}
-    async create(registerDto: RegisterDto): Promise<User> {
-      const user = this.userRepository.create(registerDto);
-      user.salt = await bcrypt.genSalt();
-      user.password = await bcrypt.hash(registerDto.password, user.salt);
-      console.log(user);
-      return this.userRepository.save(user);
-    }
+
+  async create(registerDto: RegisterDto): Promise<User> {
+    const user = this.userRepository.create(registerDto);
+    user.salt = await bcrypt.genSalt();
+    user.password = await bcrypt.hash(registerDto.password, user.salt);
+    console.log(user);
+    return this.userRepository.save(user);
+  }
+
+  async getUserByUserNameOrEmail(username: string,email: string,): Promise<User> {
+    console.log('in getUserBy....');
+    const user = await this.userRepository.findOne({
+      where: [{ username }, { email }],
+    });
+    console.log(user);
+    return user;
+  }
 
   findAll() {
    return this.userRepository.find();
@@ -32,6 +42,14 @@ export class UserService {
 
   findOne(username:string) {
     return this.userRepository.findOne({username:`${username}`});
+  }
+  findTop(nb:number){
+    return this.userRepository.find({
+      take: nb,
+      order: {
+          rating: "DESC"
+      }
+  });
   }
 
   async update(username: string, updateUserDto: UpdateUserDto) {
@@ -43,8 +61,6 @@ export class UserService {
     }
 
   }
-
-
   findNbUsers(nb:number){
     return this.userRepository.find({take:nb, order:{
       rating:"DESC"
@@ -52,14 +68,5 @@ export class UserService {
   }
   remove(id: number) {
     return `This action removes a #${id} user`;
-  }
-
-  async getUserByUserNameOrEmail(username: string,email: string,): Promise<User> {
-    console.log('in getUserBy....');
-    const user = await this.userRepository.findOne({
-      where: [{ username }, { email }],
-    });
-    console.log(user);
-    return user;
   }
 }

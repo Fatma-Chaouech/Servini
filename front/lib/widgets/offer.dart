@@ -173,15 +173,7 @@ class OfferRequestWidget extends StatelessWidget {
                                               Navigator.of(context).pop();
                                             },
                                           ),
-                                          TextButton(
-                                            child: const Text('Message',style:TextStyle(fontFamily: "Gilroy",color:  Colors.black)),
-                                            onPressed: () {
-                                              //create channel with user
-                                            },
-                                          ),
-
                                         ],
-
                                       );
                                     });
                               },

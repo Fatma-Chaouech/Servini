@@ -21,6 +21,11 @@ export class UserController {
   findNbUsers(@Param("nb") nb:string) {
     return this.userService.findNbUsers(+nb);
   }
+    @Get('/top/:nb')
+    findTop(@Param('nb') nb:string) {
+      return this.userService.findTop(+nb);
+    }
+
   @Get(':username')
   findOne(@Param('username') username: string) {
     return this.userService.findOne(username);

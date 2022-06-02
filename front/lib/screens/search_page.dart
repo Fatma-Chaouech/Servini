@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:servini_app/screens/categories_page.dart';
@@ -112,9 +114,6 @@ class _MySearchPage extends State<SearchPage> {
                     ),
                     SizedBox(height: size.height * 0.03),
                     Container(
-                      child: searchBar(context),
-                    ),
-                    Container(
                       margin: EdgeInsets.fromLTRB(0, size.height * 0.03, 0, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -180,17 +179,39 @@ class _MySearchPage extends State<SearchPage> {
                       ),
                     ),
                    // titleRow("Top Rated",TopRatedPage(),context),
-                    userContainer(context),
-                    SizedBox(height: size.height * 0.01),
-                    userContainer(context),
-                    SizedBox(height: size.height * 0.01),
-                    userContainer(context),
-                    SizedBox(height: size.height * 0.01),
-                    userContainer(context),
-                    SizedBox(height: size.height * 0.01),
-                    userContainer(context),
-                    SizedBox(height: size.height * 0.01),
-                    userContainer(context),
+                    const Text(
+                      "Top Rated",
+                      style: TextStyle(
+                        color: writingBlue,
+                        fontFamily: "Gilroy",
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    FutureBuilder(
+                        future: getUsersByNb(5),
+                        builder: (BuildContext context, AsyncSnapshot snapshot) {
+                          if(snapshot.hasData){
+                            if(snapshot.data.length==0){
+                              return Text('no data',style:TextStyle(fontSize: 20));
+                            }
+                            else {
+                              return Container(
+                                height:300,
+                                child: ListView.builder(
+                                  itemCount: snapshot.data.length,
+                                  itemBuilder: (context, index) {
+                                    return userContainer(context,snapshot.data[index]["username"],snapshot.data[index]["bio"],snapshot.data[index]["rating"]);
+
+                                  },
+
+                                ),
+                              );
+                            }}
+                          else {return CircularProgressIndicator();}
+                        }
+                    ),
                     SizedBox(height: size.height * 0.15),
                   ],
                 ),
@@ -206,5 +227,25 @@ class _MySearchPage extends State<SearchPage> {
         ),
       ),
     );
+  }
+
+  Future<List> getUsersByNb(int nb) async{
+    final response =
+    await http.get(Uri.parse('http://10.0.2.2:3000/user/top/'+nb.toString()));
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      List<dynamic> values=<dynamic>[];
+      values = json.decode(response.body);
+
+      print(values);
+      return values;
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to load recommendations');
+    }
+
   }
 }

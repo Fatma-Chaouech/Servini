@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:jwt_decode/jwt_decode.dart';
 import 'package:servini_app/screens/add_page.dart';
 import 'package:servini_app/constants/colors.dart';
+import 'package:servini_app/screens/profile_page.dart';
+import '../main.dart';
 import '../screens/search_page.dart';
 
 Widget homeBar(BuildContext context){
+
+  Map<String, dynamic> payload = Jwt.parseJwt(token);
   final size = MediaQuery.of(context).size;
   return Container(
     decoration: const BoxDecoration(
@@ -77,9 +82,17 @@ Widget homeBar(BuildContext context){
             onTap: () {
 
             },
-            child: Image.asset(
-                "assets/messenger.png",
-            height: 19),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfilePage(username: payload["username"])),
+                );
+              },
+              child: const Icon(
+                  Icons.person,
+                  color: Colors.white),
+            ),
 
           ),
         )

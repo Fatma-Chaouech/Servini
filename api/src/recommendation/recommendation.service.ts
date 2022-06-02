@@ -17,16 +17,19 @@ export class RecommendationService {
     private readonly userRepository: Repository<User>,
   ) {}
   async create(createRecommendationDto: CreateRecommendationDto) {
+    
     const newRecommendation: Recommendation= await this.recommendationRepository.save(createRecommendationDto);
     const user:User = await this.userRepository.findOne(createRecommendationDto.receiver);
-    const count= await this.recommendationRepository.findAndCount({receiver:createRecommendationDto.receiver})["count"];
-    const nb:number=count;
-    user.rating= (user.rating*(nb-1)+createRecommendationDto.rating)/nb;
-    this.userRepository.update(user.username,{...user});
+    const [list,count]= await this.recommendationRepository.findAndCount({receiver:createRecommendationDto.receiver});
+    console.log(count);
+    user.rating= (user.rating*(count-1)+createRecommendationDto.rating)/count;
+    this.userRepository.update(user.username,{rating: user.rating});
 //update user
     return newRecommendation;
   }
-
+async getRecommendationsByUsername(username:string ){
+  return await this.recommendationRepository.find({receiver: username});
+}
   findAll() {
     return `This action returns all recommendation`;
   }

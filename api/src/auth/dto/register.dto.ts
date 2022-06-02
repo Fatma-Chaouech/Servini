@@ -5,4 +5,5 @@ export interface RegisterDto {
   username: string;
   bio: string;
   location: string;
+
 }

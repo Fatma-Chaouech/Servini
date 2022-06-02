@@ -23,6 +23,10 @@ export class RecommendationController {
   findOne(@Param('id') id: string) {
     return this.recommendationService.findOne(+id);
   }
+  @Get('/user/:username')
+  getRecommendationsByUser(@Param('username') username: string) {
+    return this.recommendationService.getRecommendationsByUsername(username);
+  }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateRecommendationDto: UpdateRecommendationDto) {
