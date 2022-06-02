@@ -47,7 +47,7 @@ class Categories extends State<CategoryWidget> {
                 ),
                 SizedBox(
                   height: size.height * 0.04,
-                ),FutureBuilder(
+                ),/*FutureBuilder(
                   future: networkHelper.fetchCategory(),
                   builder: (BuildContext context, AsyncSnapshot snapshot){
                     if(snapshot.hasData){
@@ -69,7 +69,7 @@ class Categories extends State<CategoryWidget> {
                       return Center(child: CircularProgressIndicator());
                     }
                   },
-                ),
+                ),*/
                 FutureBuilder(
                   future: networkHelper.fetchCategory(),
                   builder: (BuildContext context, AsyncSnapshot snapshot){
